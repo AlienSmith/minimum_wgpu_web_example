@@ -413,7 +413,9 @@ async fn start<E: Example>(title: &str) {
                     surface.suspend();
                 }
                 Event::WindowEvent { event, .. } => match event {
-                    WindowEvent::Resized(size) => {
+                    WindowEvent::Resized(_size) => {
+                        //FIXME: winit has difficulty with android canvas size
+                        let size = PhysicalSize { width: 500, height: 400 };
                         surface.resize(&context, size);
                         example.as_mut().unwrap().resize(
                             surface.config(),

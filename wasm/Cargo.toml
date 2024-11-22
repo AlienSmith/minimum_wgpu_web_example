@@ -1,9 +1,10 @@
 [package]
-name = "wgpu-wasm-test"
-description = "wgpu + wasm test"
+name = "wgpu-webgl-wasm-test"
+description = "wgpu + webgl + wasm test"
 version = "0.1.0"
 edition = "2018"
 resolver = "2"
+
 
 [lib]
 crate-type = ["cdylib"]
@@ -19,7 +20,7 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
 winit = { version = "0.29"}
-wgpu = { version = "22.0.0" }
+wgpu = { version = "22.0.0", features = ["webgl"]}
 log = "0.4"
 cfg-if = "1"
 env_logger = "0.11"
