@@ -26,7 +26,7 @@ fn vertex(pos: [i8; 3], tc: [i8; 2]) -> Vertex {
     }
 }
 
-fn create_vertices() -> (Vec<Vertex>, Vec<u16>) {
+fn create_vertices() -> (Vec<Vertex>, Vec<u32>) {
     let vertex_data = [
         // top (0, 0, 1)
         vertex([-1, -1, 1], [0, 0]),
@@ -60,7 +60,7 @@ fn create_vertices() -> (Vec<Vertex>, Vec<u16>) {
         vertex([1, -1, -1], [0, 1]),
     ];
 
-    let index_data: &[u16] = &[
+    let index_data: &[u32] = &[
         0, 1, 2, 2, 3, 0, // top
         4, 5, 6, 6, 7, 4, // bottom
         8, 9, 10, 10, 11, 8, // right
@@ -372,7 +372,7 @@ impl crate::framework::Example for Example {
             rpass.push_debug_group("Prepare data for draw.");
             rpass.set_pipeline(&self.pipeline);
             rpass.set_bind_group(0, &self.bind_group, &[]);
-            rpass.set_index_buffer(self.index_buf.slice(..), wgpu::IndexFormat::Uint16);
+            rpass.set_index_buffer(self.index_buf.slice(..), wgpu::IndexFormat::Uint32);
             rpass.set_vertex_buffer(0, self.vertex_buf.slice(..));
             rpass.pop_debug_group();
             rpass.insert_debug_marker("Draw!");
