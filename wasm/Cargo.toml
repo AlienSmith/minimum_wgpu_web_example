@@ -1,5 +1,5 @@
 [package]
-name = "wgpu-webgl-wasm-test"
+name = "webgl-test"
 description = "wgpu + webgl + wasm test"
 version = "0.1.0"
 edition = "2018"
@@ -7,7 +7,13 @@ resolver = "2"
 
 
 [lib]
-crate-type = ["cdylib"]
+name = "webgl_test"
+crate-type = ["cdylib", "lib"]
+
+[[bin]]
+# Stop the PDB collision warning on windows
+name = "webgl_test_bin"
+path = "src/main.rs"
 
 [features]
 default = ["console_error_panic_hook"]
